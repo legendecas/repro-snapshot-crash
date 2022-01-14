@@ -1,0 +1,16 @@
+{
+  "name": "repro-snapshot-crash",
+  "version": "1.0.0",
+  "scripts": {
+    "pretest": "ncc build build-snapshot.js && sed -i '' 's|module.exports = __webpack_exports__;||g' dist/index.js",
+    "test": "node --build-snapshot --snapshot-blob snapshot.blob dist/index.js && node --snapshot-blob snapshot.blob"
+  },
+  "dependencies": {
+    "aliyun-sdk": "^1.12.4",
+    "@vercel/ncc": "^0.33.1",
+    "urllib": "2.37.3"
+  },
+  "overrides": {
+    "urllib": "2.37.3"
+  }
+}
